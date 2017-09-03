@@ -1,0 +1,79 @@
+rules:
+  attribute-quotes:
+    - 2
+  bem-depth:
+    - 2
+  border-zero:
+    - 2
+  brace-style:
+    - 2
+    -
+      allow-single-line: false
+  class-name-format:
+    - 2
+    -
+      convention: "hyphenatedbem"
+  empty-line-between-blocks:
+    - 2
+    -
+      allow-single-line-rulesets: false
+  extends-before-declarations:
+    - 2
+  final-newline:
+    - 2
+    -
+      include: true
+  force-attribute-nesting:
+    - 2
+  force-element-nesting:
+    - 2
+  force-pseudo-nesting:
+    - 2
+  hex-notation:
+    - 0
+  indentation:
+    - 2
+    -
+      size: 4
+  nesting-depth:
+    - 0
+  no-combinators:
+    - 0
+  no-css-comments:
+    - 2
+  no-empty-rulesets:
+    - 2
+  no-ids:
+    - 0
+  no-important:
+    - 0
+  no-invalid-hex:
+    - 2
+  no-misspelled-properties:
+    - 2
+  one-declaration-per-line:
+    - 2
+  placeholder-in-extend:
+    - 2
+  property-sort-order:
+    - 0
+  single-line-per-selector:
+    - 2
+  space-around-operator:
+    - 2
+  space-before-bang:
+    - 2
+  space-before-brace:
+    - 2
+  zero-unit:
+    - 2
+    -
+      include: false
+  url-quotes:
+    - 2
+  no-color-literals:
+    - 0
+  no-vendor-prefixes:
+    - 0
+  no-transition-all:
+    - 0

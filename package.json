@@ -1,0 +1,53 @@
+{
+  "name": "felicious",
+  "description": "Front-End Boilerplate",
+  "license": "MIT",
+  "keywords": [
+    "frontend",
+    "front-end",
+    "starter-kit",
+    "boilerplate"
+  ],
+  "author": "Jose Robinson <hi@joserobinson.com> (http://joserobinson.com/)",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jrobinsonc/felicious.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jrobinsonc/felicious/issues"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build",
+    "start": "./node_modules/.bin/gulp"
+  },
+  "engines": {
+    "node": ">=6.11",
+    "npm": ">=3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.13",
+    "browserify": "^14.4.0",
+    "cssnano": "^3.10.0",
+    "del": "^3.0.0",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-newer": "^1.3.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-lint": "^1.3.2",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp.spritesmith": "^6.5.1",
+    "run-sequence": "^2.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
