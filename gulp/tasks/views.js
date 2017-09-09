@@ -17,7 +17,7 @@ module.exports = (gulp, globalConfig) => {
     };
 
     gulp.task('views', () => {
-        return gulp.src([`${globalConfig.srcDir}/views/**/*`])
+        return gulp.src([`${globalConfig.srcDir}/views/**/*`, `!${globalConfig.srcDir}/views/{partials,partials/**}`])
             .pipe(pug())
             .on('error', errorHandler)
             .pipe(gulp.dest(`${globalConfig.destDir}`));
