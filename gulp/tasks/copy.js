@@ -1,5 +1,5 @@
 /**
- * Copy necessary files
+ * Copy necessary files from the root dir.
  */
 
 module.exports = (gulp, globalConfig) => {
@@ -10,7 +10,7 @@ module.exports = (gulp, globalConfig) => {
 
     // Copy all files at the root level
     gulp.task('copy', () => {
-        gulp.src(taskConfig.watch, {
+        return gulp.src(taskConfig.watch, {
             dot: true
         })
             .pipe(gulp.dest(globalConfig.destDir));

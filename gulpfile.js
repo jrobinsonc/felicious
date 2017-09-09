@@ -28,7 +28,7 @@ const tasksSequence = [
 ];
 
 gulp.task('clean', () => {
-    del([
+    return del([
         `${config.destDir}/**/*`,
         `!${config.destDir}/.gitkeep`,
         `${config.tmpDir}/**/*`,

@@ -17,10 +17,19 @@ module.exports = (gulp, globalConfig) => {
         watch: [`${globalConfig.srcDir}/images/sprites/**/*`]
     };
 
-    gulp.task('sprites', () => {
-
+    gulp.task('sprites', (done) => {
         glob(`${globalConfig.srcDir}/images/sprites/*`, {}, (err, spritesDirs) => {
-            for (let i = 0, len = spritesDirs.length; i < len; i++) {
+            const numSprites = spritesDirs.length;
+            let workDone = 0;
+            const checkFinish = () => {
+                workDone += 0.5;
+
+                if (workDone === numSprites) {
+                    done();
+                }
+            };
+
+            for (let i = 0, len = numSprites; i < len; i++) {
                 const dir = spritesDirs[i];
                 const name = path.basename(dir);
 
@@ -40,10 +49,12 @@ module.exports = (gulp, globalConfig) => {
                 spriteData.img
                     .pipe(buffer())
                     .pipe(imagemin())
-                    .pipe(gulp.dest(`${globalConfig.destDir}/images/`));
+                    .pipe(gulp.dest(`${globalConfig.destDir}/images/`))
+                    .on('end', checkFinish);
 
                 spriteData.css
-                    .pipe(gulp.dest(`${globalConfig.tmpDir}/sprites`));
+                    .pipe(gulp.dest(`${globalConfig.tmpDir}/sprites`))
+                    .on('end', checkFinish);
             }
         });
 
