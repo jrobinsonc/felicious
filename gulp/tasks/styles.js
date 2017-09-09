@@ -12,6 +12,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const autoprefixer = require('autoprefixer');
+const errorHandler = require('../libs/error-handler');
 
 module.exports = (gulp, globalConfig) => {
 
@@ -46,12 +47,12 @@ module.exports = (gulp, globalConfig) => {
         }
 
         return gulp.src(`${globalConfig.srcDir}/css/main.scss`)
+            .pipe(gulpif(globalConfig.dev, sourcemaps.init()))
             .pipe(sass({
                 includePaths: ['./node_modules', globalConfig.tmpDir]
-            }).on('error', sass.logError))
-            .pipe(gulpif(globalConfig.dev, sourcemaps.init()))
+            }).on('error', errorHandler))
             .pipe(postcss(postcssPlugins))
-            .pipe(gulpif(globalConfig.dev, sourcemaps.write()))
+            .pipe(gulpif(globalConfig.dev, sourcemaps.write('./')))
             .pipe(gulp.dest(`${globalConfig.destDir}/css/`));
 
     });
