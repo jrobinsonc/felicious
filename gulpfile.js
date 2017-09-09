@@ -50,7 +50,6 @@ gulp.task('serve', ['build'], () => {
                 extensions: ['html']
             }
         },
-        watchEvents: ['change', 'add', 'unlink'],
         ghostMode: false,
         notify: false
     });
