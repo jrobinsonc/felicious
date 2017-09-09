@@ -10,6 +10,7 @@ const buffer = require('vinyl-buffer');
 const imagemin = require('gulp-imagemin');
 const path = require('path');
 const glob = require('glob');
+const q = require('q');
 
 module.exports = (gulp, globalConfig) => {
 
@@ -17,17 +18,21 @@ module.exports = (gulp, globalConfig) => {
         watch: [`${globalConfig.srcDir}/images/sprites/**/*`]
     };
 
-    gulp.task('sprites', (done) => {
+    gulp.task('sprites', () => {
+        const deferred = q.defer();
+
         glob(`${globalConfig.srcDir}/images/sprites/*`, {}, (err, spritesDirs) => {
             const numSprites = spritesDirs.length;
             let workDone = 0;
             const checkFinish = () => {
                 workDone += 0.5;
 
-                if (workDone === numSprites) {
-                    done();
+                if (workDone >= numSprites) {
+                    deferred.resolve();
                 }
             };
+
+            checkFinish();
 
             for (let i = 0, len = numSprites; i < len; i++) {
                 const dir = spritesDirs[i];
@@ -58,6 +63,7 @@ module.exports = (gulp, globalConfig) => {
             }
         });
 
+        return deferred.promise;
     });
 
     return taskConfig;
