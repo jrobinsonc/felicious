@@ -34,6 +34,8 @@ Includes:
     yarn install
     ```
 
+If `yarn install` is giving an error, try deleting the file `yarn.lock` and run `yarn install` again.
+
 1. Then, to start development run:
 
     ```
