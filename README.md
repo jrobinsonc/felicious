@@ -1,5 +1,7 @@
 # FElicious - Front-End Boilerplate
 
+[![Build Status](https://travis-ci.org/jrobinsonc/felicious.svg?branch=master)](https://travis-ci.org/jrobinsonc/felicious)
+
 This is a Front-End starter kit with Browserify, PostCSS, BrowserSync and more. A solution to build modern web applications with zero initial configuration.
 
 [https://felicious.netlify.com/](https://felicious.netlify.com/)
