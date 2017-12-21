@@ -17,7 +17,7 @@ const errorHandler = require('../libs/error-handler');
 module.exports = (gulp, globalConfig) => {
 
     const taskConfig = {
-        watch: [`${globalConfig.srcDir}/css/**/*`]
+        watch: [`${globalConfig.srcDir}/css/**`]
     };
 
     // Don't load sprites.

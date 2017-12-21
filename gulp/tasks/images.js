@@ -11,7 +11,7 @@ const newer = require('gulp-newer');
 module.exports = (gulp, globalConfig) => {
 
     const taskConfig = {
-        watch: [`${globalConfig.srcDir}/images/**/*`]
+        watch: [`${globalConfig.srcDir}/images/**`]
     };
 
     // Prevent to load sprites images.

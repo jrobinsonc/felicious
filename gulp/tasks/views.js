@@ -12,7 +12,7 @@ module.exports = (gulp, globalConfig) => {
 
     const taskConfig = {
         watch: [
-            `${globalConfig.srcDir}/views/**/*`
+            `${globalConfig.srcDir}/views/**`
         ]
     };
 

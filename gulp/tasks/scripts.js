@@ -18,7 +18,7 @@ const errorHandler = require('../libs/error-handler');
 module.exports = (gulp, globalConfig) => {
 
     const taskConfig = {
-        watch: [`${globalConfig.srcDir}/js/**/*`]
+        watch: [`${globalConfig.srcDir}/js/**`]
     };
 
     gulp.task('scripts-lint', () => {
@@ -36,8 +36,7 @@ module.exports = (gulp, globalConfig) => {
             debug: globalConfig.dev,
             plugin: []
         }).transform('babelify', {
-            presets: ['es2015'],
-            babelrc: false
+            presets: ['es2015']
         });
 
         bundleStream
@@ -58,7 +57,7 @@ module.exports = (gulp, globalConfig) => {
                 compress: false
             }, {})))
             .on('error', errorHandler)
-            .pipe(gulpif(globalConfig.dev, sourcemaps.write()))
+            .pipe(gulpif(globalConfig.dev, sourcemaps.write('./')))
             .pipe(gulp.dest(`${globalConfig.destDir}/js/`));
 
         return bundleStream;
