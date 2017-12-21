@@ -7,6 +7,7 @@
 
 const pug = require('gulp-pug');
 const errorHandler = require('../libs/error-handler');
+const htmlmin = require('gulp-htmlmin');
 
 module.exports = (gulp, globalConfig) => {
 
@@ -20,6 +21,10 @@ module.exports = (gulp, globalConfig) => {
         return gulp.src([`${globalConfig.srcDir}/views/**/*`, `!${globalConfig.srcDir}/views/{partials,partials/**}`])
             .pipe(pug())
             .on('error', errorHandler)
+            .pipe(htmlmin({
+                collapseWhitespace: true,
+                processConditionalComments: true
+            }))
             .pipe(gulp.dest(`${globalConfig.destDir}`));
     });
 
