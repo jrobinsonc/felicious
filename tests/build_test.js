@@ -20,3 +20,7 @@ Scenario('validate Images', (I) => {
 Scenario('validate Sprites', (I) => {
     I.checkFile('images', 'social.png');
 });
+
+Scenario('validate copying files', (I) => {
+    I.checkFile('', 'favicon.ico');
+});
