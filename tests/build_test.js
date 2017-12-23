@@ -16,3 +16,7 @@ Scenario('validate JavaScript', (I) => {
 Scenario('validate Images', (I) => {
     I.checkFile('images', 'logo.png');
 });
+
+Scenario('validate Sprites', (I) => {
+    I.checkFile('images', 'social.png');
+});
