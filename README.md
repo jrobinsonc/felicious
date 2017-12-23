@@ -27,6 +27,7 @@ Includes:
 
 * [NodeJS](https://nodejs.org/en/download/) >=6.11
 * [NPM](https://nodejs.org/en/download/) >=3
+* [Yarn](https://yarnpkg.com/en/docs/install) >=1.2
 
 ## Usage
 
