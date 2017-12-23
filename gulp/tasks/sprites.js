@@ -8,9 +8,11 @@
 const spritesmith = require('gulp.spritesmith');
 const buffer = require('vinyl-buffer');
 const imagemin = require('gulp-imagemin');
+const errorHandler = require('../libs/error-handler');
 const path = require('path');
 const glob = require('glob');
 const q = require('q');
+const fs = require('fs');
 
 module.exports = (gulp, globalConfig) => {
 
@@ -21,7 +23,21 @@ module.exports = (gulp, globalConfig) => {
     gulp.task('sprites', () => {
         const deferred = q.defer();
 
-        glob(`${globalConfig.srcDir}/images/sprites/*`, {}, (err, spritesDirs) => {
+        glob(`${globalConfig.srcDir}/images/sprites/*`, {}, (err, nodesList) => {
+
+            const spritesDirs = [];
+
+            for (let i = 0, len = nodesList.length; i < len; i++) {
+                const nodePath = nodesList[i];
+                const isDir = fs.statSync(nodePath).isDirectory();
+
+                if (false === isDir) {
+                    continue;
+                }
+
+                spritesDirs.push(nodePath);
+            }
+
             const numSprites = spritesDirs.length;
             let workDone = 0;
             const checkFinish = () => {
@@ -34,7 +50,7 @@ module.exports = (gulp, globalConfig) => {
 
             checkFinish();
 
-            for (let i = 0, len = numSprites; i < len; i++) {
+            for (let i = 0; i < numSprites; i++) {
                 const dir = spritesDirs[i];
                 const name = path.basename(dir);
 
@@ -49,7 +65,15 @@ module.exports = (gulp, globalConfig) => {
                         cssOpts: {
                             // functions: false
                         }
-                    }));
+                    }))
+                    .on('error', (errObj) => {
+                        // TODO : There should be a test against this.
+                        if (errObj.message === 'Invalid file signature') {
+                            errorHandler(new Error('Some of the provided images are not valid PNGs.'));
+                        } else {
+                            errorHandler(errObj);
+                        }
+                    });
 
                 spriteData.img
                     .pipe(buffer())
