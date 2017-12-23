@@ -5,7 +5,9 @@
 module.exports = (gulp, globalConfig) => {
 
     const taskConfig = {
-        watch: [`${globalConfig.srcDir}/*.*`]
+        watch: [
+            `${globalConfig.srcDir}/*.*` // Only copy top-level files
+        ]
     };
 
     // Copy all files at the root level

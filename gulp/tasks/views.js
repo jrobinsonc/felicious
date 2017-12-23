@@ -13,12 +13,12 @@ module.exports = (gulp, globalConfig) => {
 
     const taskConfig = {
         watch: [
-            `${globalConfig.srcDir}/views/**`
+            `${globalConfig.srcDir}/views/**/*`
         ]
     };
 
     gulp.task('views', () => {
-        return gulp.src([`${globalConfig.srcDir}/views/**/*`, `!${globalConfig.srcDir}/views/{partials,partials/**}`])
+        return gulp.src([`${globalConfig.srcDir}/views/*.{html,pug}`])
             .pipe(pug())
             .on('error', errorHandler)
             .pipe(htmlmin({

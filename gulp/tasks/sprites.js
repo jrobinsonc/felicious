@@ -15,7 +15,7 @@ const q = require('q');
 module.exports = (gulp, globalConfig) => {
 
     const taskConfig = {
-        watch: [`${globalConfig.srcDir}/images/sprites/**`]
+        watch: [`${globalConfig.srcDir}/images/sprites/*/*.png`]
     };
 
     gulp.task('sprites', () => {

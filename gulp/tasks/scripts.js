@@ -18,7 +18,7 @@ const errorHandler = require('../libs/error-handler');
 module.exports = (gulp, globalConfig) => {
 
     const taskConfig = {
-        watch: [`${globalConfig.srcDir}/js/**`]
+        watch: [`${globalConfig.srcDir}/js/**/*`]
     };
 
     gulp.task('scripts-lint', () => {
