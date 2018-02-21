@@ -18,9 +18,9 @@
     "url": "https://github.com/jrobinsonc/felicious/issues"
   },
   "scripts": {
-    "test": "./node_modules/codeceptjs/bin/codecept.js run",
-    "build": "./node_modules/.bin/gulp build",
-    "start": "./node_modules/.bin/gulp"
+    "test": "./node_modules/.bin/codeceptjs run",
+    "build": "./node_modules/.bin/gulp",
+    "start": "./node_modules/.bin/gulp --dev"
   },
   "engines": {
     "node": ">=6.11",
