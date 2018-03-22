@@ -37,6 +37,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('build', ['clean'], (done) => {
+
     tasksSequence.push(done);
 
     runSequence.apply(null, tasksSequence);
@@ -78,3 +79,8 @@ for (let i = 0, len = tasksSequence.length; i < len; i++) {
 
     tasksConfigList.push(taskConfig);
 }
+
+module.exports = {
+    gulp: gulp,
+    config: config
+};

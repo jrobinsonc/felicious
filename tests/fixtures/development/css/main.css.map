@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAEA;EACI,mBAAkB;EAClB,kBAAiB,EACpB","file":"main.css","sourcesContent":["@import '../../.tmp/sprites/social';\n\nbody {\n    text-align: center;\n    padding-top: 50px;\n}\n"]}
