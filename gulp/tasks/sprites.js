@@ -2,7 +2,7 @@
  * Create sprites of images.
  *
  * Install:
- * yarn add -D gulp.spritesmith gulp-imagemin vinyl-buffer glob
+ * yarn add -D gulp.spritesmith gulp-imagemin vinyl-buffer glob path fs
  */
 
 const spritesmith = require('gulp.spritesmith');
@@ -11,7 +11,6 @@ const imagemin = require('gulp-imagemin');
 const errorHandler = require('../libs/error-handler');
 const path = require('path');
 const glob = require('glob');
-const q = require('q');
 const fs = require('fs');
 
 module.exports = (gulp, globalConfig) => {
@@ -20,9 +19,7 @@ module.exports = (gulp, globalConfig) => {
         watch: [`${globalConfig.srcDir}/images/sprites/*/*.png`]
     };
 
-    gulp.task('sprites', () => {
-        const deferred = q.defer();
-
+    gulp.task('sprites', (done) => {
         glob(`${globalConfig.srcDir}/images/sprites/*`, {}, (err, nodesList) => {
 
             const spritesDirs = [];
@@ -31,7 +28,7 @@ module.exports = (gulp, globalConfig) => {
                 const nodePath = nodesList[i];
                 const isDir = fs.statSync(nodePath).isDirectory();
 
-                if (false === isDir) {
+                if (isDir === false) {
                     continue;
                 }
 
@@ -40,15 +37,14 @@ module.exports = (gulp, globalConfig) => {
 
             const numSprites = spritesDirs.length;
             let workDone = 0;
+
             const checkFinish = () => {
                 workDone += 0.5;
 
                 if (workDone >= numSprites) {
-                    deferred.resolve();
+                    done();
                 }
             };
-
-            checkFinish();
 
             for (let i = 0; i < numSprites; i++) {
                 const dir = spritesDirs[i];
@@ -86,8 +82,6 @@ module.exports = (gulp, globalConfig) => {
                     .on('end', checkFinish);
             }
         });
-
-        return deferred.promise;
     });
 
     return taskConfig;
