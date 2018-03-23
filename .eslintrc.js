@@ -11,6 +11,12 @@ module.exports = {
         'serviceworker': true
     },
 
+    // 'globals': {
+    //     'Scenario': true,
+    //     'actor': true,
+    //     'Feature': true
+    // },
+
     'parserOptions': {
         'ecmaVersion': 8,
         'ecmaFeatures': {

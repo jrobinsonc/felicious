@@ -1,6 +1,6 @@
 /**
  * Install
- * yarn add -D gulp gulp-util run-sequence del
+ * yarn add -D gulp gulp-util run-sequence del browser-sync
  */
 
 const gulp = require('gulp');
@@ -37,6 +37,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('build', ['clean'], (done) => {
+
     tasksSequence.push(done);
 
     runSequence.apply(null, tasksSequence);
@@ -62,9 +63,7 @@ gulp.task('serve', ['build'], () => {
 });
 
 gulp.task('default', () => {
-    config.dev = true;
-
-    gulp.start('serve');
+    gulp.start(config.dev ? 'serve' : 'build');
 });
 
 /**
@@ -80,3 +79,8 @@ for (let i = 0, len = tasksSequence.length; i < len; i++) {
 
     tasksConfigList.push(taskConfig);
 }
+
+module.exports = {
+    gulp: gulp,
+    config: config
+};
