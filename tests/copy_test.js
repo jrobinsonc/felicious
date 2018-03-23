@@ -1,24 +1,23 @@
 const $ = require('../gulpfile');
-const runSequence = require('run-sequence').use($.gulp);
 
 Feature('Copying root files');
 
-Scenario('for production', (I) => {
+Scenario('for production', async (I) => {
 
     $.config.dev = false;
 
-    runSequence('clean', 'copy', () => {
-        I.checkFile('favicon.ico', $.config.dev);
-    });
+    $.gulp.start('copy');
+
+    await I.checkFile('favicon.ico', $.config.dev);
 
 });
 
-Scenario('for development', (I) => {
+Scenario('for development', async (I) => {
 
     $.config.dev = true;
 
-    runSequence('clean', 'copy', () => {
-        I.checkFile('favicon.ico', $.config.dev);
-    });
+    $.gulp.start('copy');
+
+    await I.checkFile('favicon.ico', $.config.dev);
 
 });

@@ -3,22 +3,22 @@ const runSequence = require('run-sequence').use($.gulp);
 
 Feature('Building HTML');
 
-Scenario('for production', (I) => {
+Scenario('for production', async (I) => {
 
     $.config.dev = false;
 
-    runSequence('clean', 'views', () => {
-        I.checkFile('index.html', $.config.dev);
-    });
+    $.gulp.start('views');
+
+    await I.checkFile('index.html', $.config.dev);
 
 });
 
-Scenario('for development', (I) => {
+Scenario('for development', async (I) => {
 
     $.config.dev = true;
 
-    runSequence('clean', 'views', () => {
-        I.checkFile('index.html', $.config.dev);
-    });
+    $.gulp.start('views');
+
+    await I.checkFile('index.html', $.config.dev);
 
 });

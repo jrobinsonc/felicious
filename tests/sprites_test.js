@@ -1,24 +1,23 @@
 const $ = require('../gulpfile');
-const runSequence = require('run-sequence').use($.gulp);
 
 Feature('Building sprites');
 
-Scenario('for production', (I) => {
+Scenario('for production', async (I) => {
 
     $.config.dev = false;
 
-    runSequence('clean', 'sprites', () => {
-        I.checkFile('images/social.png', $.config.dev);
-    });
+    $.gulp.start('sprites');
+
+    await I.checkFile('images/social.png', $.config.dev);
 
 });
 
-Scenario('for development', (I) => {
+Scenario('for development', async (I) => {
 
     $.config.dev = true;
 
-    runSequence('clean', 'sprites', () => {
-        I.checkFile('images/social.png', $.config.dev);
-    });
+    $.gulp.start('sprites');
+
+    await I.checkFile('images/social.png', $.config.dev);
 
 });

@@ -2,8 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const gulpConfig = require('../gulpfile').config;
 
-'use strict';
-
 // in this file you can append custom step methods to 'I' object
 
 /**
@@ -20,41 +18,6 @@ const loadFixture = (fileName, env) => {
     return fs.readFileSync(filePath).toString();
 };
 
-/**
- * Wait until file exist
- *
- * @param {string} file - File to be checked
- * @param {integer} maxSeconds - Max amount of time in seconds
- * @param {callback} cb - Callback to be executed if file is found
- *
- * @return {void}
- */
-const waitUntilFileExist = (file, maxSeconds, cb) => {
-
-    const timeInterval = 10; // In milliseconds
-    const maxTime = maxSeconds * 1000;
-    const maxAttemps = maxTime / timeInterval;
-    let attemps = 0;
-
-    const interval = setInterval(() => {
-        attemps++;
-
-        const foundFile = fs.existsSync(file);
-
-        if (foundFile || attemps >= maxAttemps) {
-            clearInterval(interval);
-
-            if (foundFile) {
-                cb();
-            } else {
-                const seconds = maxTime / 1000;
-                throw new Error(`File not found: ${file}, after ${seconds} seconds.`);
-            }
-        }
-
-    }, timeInterval);
-}
-
 module.exports = function () {
     return actor({
 
@@ -67,22 +30,34 @@ module.exports = function () {
          * @return {void}
          */
         checkFile: function (fileName, dev) {
+            const actorThis = this;
 
-            const env = dev === true? 'development' : 'production';
+            return new Promise(resolve => {
+                const maxAttemps = 20;
+                let attemps = 0;
+                const intervalSpan = 100;
 
-            const dirPath = path.join(gulpConfig.destDir, path.dirname(fileName));
-            const fileBaseName = path.basename(fileName);
-            // const seconds = 2;
+                const dirPath = path.join(gulpConfig.destDir, path.dirname(fileName));
+                const fileBaseName = path.basename(fileName);
+                const env = dev === true ? 'development' : 'production';
 
-            // Sometimes the file is not generated enough fast to be checked
-            // waitUntilFileExist(path.join(dirPath, fileBaseName), seconds, () => {
-            this.amInPath(dirPath);
+                const interval = setInterval(() => {
+                    attemps++;
 
-            this.seeFile(fileBaseName);
+                    const fileExists = fs.existsSync(path.join(dirPath, fileBaseName));
 
-            this.seeFileContentsEqual(loadFixture(fileName, env));
-            // });
+                    if (fileExists || attemps >= maxAttemps) {
+                        clearInterval(interval);
+
+                        resolve(fileExists);
+
+                        actorThis.amInPath(dirPath);
+                        actorThis.seeFile(fileBaseName);
+                        actorThis.seeFileContentsEqual(loadFixture(fileName, env));
+                    }
+
+                }, intervalSpan);
+            });
         }
-
     });
 };
