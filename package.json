@@ -23,8 +23,8 @@
     "start": "./node_modules/.bin/gulp --dev"
   },
   "engines": {
-    "node": ">=6.11",
-    "npm": ">=3"
+    "node": ">=8.9",
+    "npm": ">=5.6"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -32,7 +32,7 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.18.13",
     "browserify": "^14.4.0",
-    "codeceptjs": "~1.0.3",
+    "codeceptjs": "^1.1.7",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
     "glob": "^7.1.2",
