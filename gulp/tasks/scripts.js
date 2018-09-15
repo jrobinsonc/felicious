@@ -35,9 +35,7 @@ module.exports = (gulp, globalConfig) => {
         const bundleStream = browserify({
             debug: globalConfig.dev,
             plugin: []
-        }).transform('babelify', {
-            presets: ['es2015']
-        });
+        }).transform('babelify');
 
         bundleStream
             .add(`${globalConfig.srcDir}/js/main.js`)

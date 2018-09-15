@@ -34,10 +34,7 @@ module.exports = (gulp, globalConfig) => {
 
     gulp.task('styles', ['styles-lint'], () => {
         const postcssPlugins = [
-            // http://browserl.ist/?q=last+2+versions
-            autoprefixer({
-                browsers: ['last 2 versions']
-            })
+            autoprefixer()
         ];
 
         if (!globalConfig.dev) {
