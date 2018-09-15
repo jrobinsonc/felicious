@@ -4,7 +4,7 @@
  */
 
 const gulp = require('gulp');
-const gutil = require('gulp-util');
+const gutil = require('./gulp/libs/utils');
 const runSequence = require('run-sequence');
 const del = require('del');
 const browserSync = require('browser-sync').create();

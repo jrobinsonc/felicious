@@ -1,4 +1,4 @@
-const gutil = require('gulp-util');
+const gutil = require('./utils');
 const notifier = require('node-notifier');
 
 module.exports = function (errObj) {
