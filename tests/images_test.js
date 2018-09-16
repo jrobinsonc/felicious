@@ -1,3 +1,5 @@
+/* global Feature, Scenario */
+
 const $ = require('../gulpfile');
 
 Feature('Compressing images');

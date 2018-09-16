@@ -1,3 +1,5 @@
+/* global actor */
+
 const fs = require('fs');
 const path = require('path');
 const gulpConfig = require('../gulpfile').config;
