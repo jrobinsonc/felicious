@@ -1,6 +1,7 @@
 # FElicious - Front-End Boilerplate
 
 [![Build Status](https://travis-ci.org/jrobinsonc/felicious.svg?branch=master)](https://travis-ci.org/jrobinsonc/felicious)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/80cac1bb731048498b718ce87df06a21)](https://www.codacy.com/app/jrobinsonc/felicious?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jrobinsonc/felicious&amp;utm_campaign=Badge_Grade)
 
 This is a Front-End starter kit with Browserify, PostCSS, BrowserSync and more. A solution to build modern web applications with zero initial configuration.
 
@@ -23,7 +24,7 @@ Includes:
 * [SASS](http://sass-lang.com/)
 * [spritesmith](https://github.com/twolfson/gulp.spritesmith)
 
-## Requirements 
+## Requirements
 
 * [NodeJS](https://nodejs.org/en/download/) >=6.11
 * [NPM](https://nodejs.org/en/download/) >=3
@@ -33,7 +34,7 @@ Includes:
 
 1. First of all, install dependencies:
 
-    ```
+    ```shell
     yarn install
     ```
 
@@ -41,7 +42,7 @@ Includes:
 
 1. Then, to start development run:
 
-    ```
+    ```shell
     yarn start
     ```
 
@@ -49,7 +50,7 @@ Includes:
 
 1. To build for production:
 
-    ```
+    ```shell
     yarn build
     ```
 
@@ -68,11 +69,11 @@ There are specific tasks you can use to build particular assets, for example, yo
 |views|Generate views|
 |copy|Copy files from the root (like favicon.ico) to dist/|
 
-#### DEV mode
+### Dev mode
 
 If you need to run any of this tasks in DEV mode, you have to append `--dev`, for example, to transpile JavaScript without compress the result use `gulp scripts --dev`. Also, you can build the entire project using `gulp build --dev`.
 
-## Questions?
+## Questions
 
 If you have any questions, please feel free to ask through [new issue](https://github.com/jrobinsonc/felicious/issues/new).
 
