@@ -1,5 +1,6 @@
+/* global Feature, Scenario */
+
 const $ = require('../gulpfile');
-const runSequence = require('run-sequence').use($.gulp);
 
 Feature('Building HTML');
 
