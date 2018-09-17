@@ -1,8 +1,8 @@
 {
   "name": "felicious",
-  "description": "Front-End Boilerplate",
+  "description": "Front-End starter-kit",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "keywords": [
     "boilerplate",
     "front-end",
