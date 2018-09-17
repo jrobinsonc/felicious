@@ -32,10 +32,12 @@ gulp.task('clean', () => {
         `${config.destDir}/**/*`,
         `!${config.destDir}/.gitkeep`,
         `${config.tmpDir}/**/*`,
-        `!${config.tmpDir}/.gitkeep`
+        `!${config.tmpDir}/.gitkeep`,
+        './coverage'
     ]);
 });
 
+/* istanbul ignore next */
 gulp.task('build', ['clean'], (done) => {
 
     tasksSequence.push(done);
@@ -43,6 +45,7 @@ gulp.task('build', ['clean'], (done) => {
     runSequence.apply(null, tasksSequence);
 });
 
+/* istanbul ignore next */
 gulp.task('serve', ['build'], () => {
     browserSync.init({
         server: {
@@ -62,6 +65,7 @@ gulp.task('serve', ['build'], () => {
     }
 });
 
+/* istanbul ignore next */
 gulp.task('default', () => {
     gulp.start(config.dev ? 'serve' : 'build');
 });
