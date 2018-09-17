@@ -2,10 +2,11 @@
 
 [![Build Status](https://travis-ci.org/jrobinsonc/felicious.svg?branch=master)](https://travis-ci.org/jrobinsonc/felicious)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/80cac1bb731048498b718ce87df06a21)](https://www.codacy.com/app/jrobinsonc/felicious?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jrobinsonc/felicious&amp;utm_campaign=Badge_Grade)
+[![Coverage Status](https://coveralls.io/repos/github/jrobinsonc/felicious/badge.svg?branch=feature%2Fimplementing-code-coverage)](https://coveralls.io/github/jrobinsonc/felicious?branch=feature%2Fimplementing-code-coverage)
 
 This is a Front-End starter kit with Browserify, PostCSS, BrowserSync and more. A solution to build modern web applications with zero initial configuration.
 
-[https://felicious.netlify.com/](https://felicious.netlify.com/)
+[https://github.com/jrobinsonc/felicious](https://github.com/jrobinsonc/felicious)
 
 ## Features
 
@@ -26,8 +27,8 @@ Includes:
 
 ## Requirements
 
-* [NodeJS](https://nodejs.org/en/download/) >=6.11
-* [NPM](https://nodejs.org/en/download/) >=3
+* [NodeJS](https://nodejs.org/en/download/) >=8.9
+* [NPM](https://nodejs.org/en/download/) >=5.6
 * [Yarn](https://yarnpkg.com/en/docs/install) >=1.2
 
 ## Usage
@@ -38,7 +39,7 @@ Includes:
     yarn install
     ```
 
-    If `yarn install` is giving an error, try deleting the file `yarn.lock` and run `yarn install` again.
+    **NOTE:** If `yarn install` is giving errors, try deleting the file `yarn.lock` and run `yarn install` again.
 
 1. Then, to start development run:
 
