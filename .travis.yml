@@ -8,7 +8,7 @@ node_js:
   - "8"
 
 script:
-  - ./node_modules/.bin/istanbul cover ./node_modules/.bin/codeceptjs run && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - yarn cover && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 cache:
   yarn: true
