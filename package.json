@@ -31,7 +31,7 @@
     "@babel/core": "^7.0.1",
     "@babel/preset-env": "^7.0.0",
     "ansi-colors": "^3.0.5",
-    "autoprefixer": "^9.1.5",
+    "autoprefixer": "^9.3.1",
     "babelify": "^10.0.0",
     "browser-sync": "^2.24.7",
     "browserify": "^16.2.2",
