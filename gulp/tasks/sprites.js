@@ -1,30 +1,30 @@
 /**
  * Create sprites of images.
- *
- * Install:
- * yarn add -D gulp.spritesmith gulp-imagemin vinyl-buffer glob path fs
  */
 
 const spritesmith = require('gulp.spritesmith');
 const buffer = require('vinyl-buffer');
 const imagemin = require('gulp-imagemin');
-const errorHandler = require('../libs/error-handler');
 const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
+const errorHandler = require('../libs/error-handler');
 
 module.exports = (gulp, globalConfig) => {
-
     const taskConfig = {
         watch: [`${globalConfig.srcDir}/images/sprites/*/*.png`]
     };
 
     gulp.task('sprites', (done) => {
         glob(`${globalConfig.srcDir}/images/sprites/*`, {}, (err, nodesList) => {
+            if (err) {
+                errorHandler(err.stack);
+                return;
+            }
 
             const spritesDirs = [];
 
-            for (let i = 0, len = nodesList.length; i < len; i++) {
+            for (let i = 0, len = nodesList.length; i < len; i += 1) {
                 const nodePath = nodesList[i];
                 const isDir = fs.statSync(nodePath).isDirectory();
 
@@ -38,6 +38,12 @@ module.exports = (gulp, globalConfig) => {
             const numSprites = spritesDirs.length;
             let workDone = 0;
 
+            /**
+             * Helps to identify when the task is done by counting if
+             * all the sprites are done.
+             *
+             * @return {null}
+             */
             const checkFinish = () => {
                 workDone += 0.5;
 
@@ -46,7 +52,7 @@ module.exports = (gulp, globalConfig) => {
                 }
             };
 
-            for (let i = 0; i < numSprites; i++) {
+            for (let i = 0; i < numSprites; i += 49) {
                 const dir = spritesDirs[i];
                 const name = path.basename(dir);
 
@@ -55,7 +61,7 @@ module.exports = (gulp, globalConfig) => {
                         imgName: `${name}.png`,
                         cssName: `${name}.scss`,
                         cssSpritesheetName: name,
-                        cssVarMap: function (sprite) {
+                        cssVarMap: (sprite) => {
                             sprite.name = `${name}-image-${sprite.name}`;
                         },
                         cssOpts: {

@@ -1,16 +1,12 @@
 /**
  * Compress images.
- *
- * Install:
- * yarn add -D gulp-pug
  */
 
 const pug = require('gulp-pug');
-const errorHandler = require('../libs/error-handler');
 const htmlmin = require('gulp-htmlmin');
+const errorHandler = require('../libs/error-handler');
 
 module.exports = (gulp, globalConfig) => {
-
     const taskConfig = {
         watch: [
             `${globalConfig.srcDir}/views/**/*`
@@ -30,5 +26,3 @@ module.exports = (gulp, globalConfig) => {
 
     return taskConfig;
 };
-
-

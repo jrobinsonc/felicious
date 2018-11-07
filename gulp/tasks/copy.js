@@ -3,7 +3,6 @@
  */
 
 module.exports = (gulp, globalConfig) => {
-
     const taskConfig = {
         watch: [
             `${globalConfig.srcDir}/*.*` // Only copy top-level files
