@@ -1,15 +1,11 @@
 /**
  * Compress images.
- *
- * Install:
- * yarn add -D gulp-imagemin gul-newer
  */
 
 const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 
 module.exports = (gulp, globalConfig) => {
-
     const taskConfig = {
         watch: [`${globalConfig.srcDir}/images/**/*`]
     };

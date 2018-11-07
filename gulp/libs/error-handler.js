@@ -1,7 +1,7 @@
-const gutil = require('./utils');
 const notifier = require('node-notifier');
+const gutil = require('./utils');
 
-module.exports = function (errObj) {
+module.exports = (errObj) => {
     let message = gutil.colors.red('Error');
 
     if ('plugin' in errObj) {

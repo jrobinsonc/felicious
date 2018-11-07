@@ -1,12 +1,8 @@
 /**
  * Parse and minify JavaScript
- *
- * Install:
- * yarn add -D babel-preset-es2015 babelify gulp-eslint gulp-if vinyl-source-stream browserify vinyl-buffer gulp-uglify gulp-sourcemaps
  */
 
 const eslint = require('gulp-eslint');
-const eslintOptions = require('../../.eslintrc.js');
 const gulpif = require('gulp-if');
 const source = require('vinyl-source-stream');
 const browserify = require('browserify');
@@ -14,16 +10,18 @@ const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
 const buffer = require('vinyl-buffer');
 const errorHandler = require('../libs/error-handler');
+const eslintOptions = require('../../.eslintrc.js');
 
 module.exports = (gulp, globalConfig) => {
-
     const taskConfig = {
         watch: [`${globalConfig.srcDir}/js/**/*`]
     };
 
     gulp.task('scripts-lint', () => {
-        taskConfig.watch.push('gulpfile.js');
-        taskConfig.watch.push('tasks/*.js');
+        if (globalConfig.dev) {
+            taskConfig.watch.push('*.js');
+            taskConfig.watch.push('gulp/**/*.js');
+        }
 
         return gulp.src(taskConfig.watch)
             .pipe(eslint(eslintOptions))
@@ -44,7 +42,7 @@ module.exports = (gulp, globalConfig) => {
             .pipe(source('main.js'))
             .pipe(buffer())
             .pipe(gulpif(globalConfig.dev, sourcemaps.init({
-                loadMaps: true // loads map from browserify file
+                loadMaps: true // Loads map from browserify file
             })))
             .pipe(uglify(gulpif(globalConfig.dev, {
                 mangle: false,

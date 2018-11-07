@@ -1,8 +1,5 @@
 /**
  * Parse and minify JavaScript
- *
- * Install:
- * yarn add -D gulp-sass-lint gulp-sass gulp-if gulp-sourcemaps gulp-postcss cssnano autoprefixer
  */
 
 const sassLint = require('gulp-sass-lint');
@@ -15,7 +12,6 @@ const autoprefixer = require('autoprefixer');
 const errorHandler = require('../libs/error-handler');
 
 module.exports = (gulp, globalConfig) => {
-
     const taskConfig = {
         watch: [`${globalConfig.srcDir}/css/**/*`]
     };
@@ -51,7 +47,6 @@ module.exports = (gulp, globalConfig) => {
             .pipe(postcss(postcssPlugins))
             .pipe(gulpif(globalConfig.dev, sourcemaps.write('./')))
             .pipe(gulp.dest(`${globalConfig.destDir}/css/`));
-
     });
 
     return taskConfig;

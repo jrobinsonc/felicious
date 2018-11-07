@@ -1,13 +1,8 @@
-/**
- * Install
- * yarn add -D gulp gulp-util run-sequence del browser-sync
- */
-
 const gulp = require('gulp');
-const gutil = require('./gulp/libs/utils');
 const runSequence = require('run-sequence');
 const del = require('del');
 const browserSync = require('browser-sync').create();
+const gutil = require('./gulp/libs/utils');
 
 const config = {
     dev: gutil.env.dev === true,
@@ -39,10 +34,9 @@ gulp.task('clean', () => {
 
 /* istanbul ignore next */
 gulp.task('build', ['clean'], (done) => {
-
     tasksSequence.push(done);
 
-    runSequence.apply(null, tasksSequence);
+    runSequence(...tasksSequence);
 });
 
 /* istanbul ignore next */
@@ -58,7 +52,7 @@ gulp.task('serve', ['build'], () => {
         notify: false
     });
 
-    for (let i = 0, len = tasksConfigList.length; i < len; i++) {
+    for (let i = 0, len = tasksConfigList.length; i < len; i += 1) {
         const task = tasksConfigList[i];
 
         gulp.watch(task.watch, [task.name, browserSync.reload]);
@@ -75,7 +69,7 @@ gulp.task('default', () => {
  */
 const tasksConfigList = [];
 
-for (let i = 0, len = tasksSequence.length; i < len; i++) {
+for (let i = 0, len = tasksSequence.length; i < len; i += 1) {
     const taskName = tasksSequence[i];
     const taskConfig = require(`./gulp/tasks/${taskName}`)(gulp, config);
 
@@ -85,6 +79,6 @@ for (let i = 0, len = tasksSequence.length; i < len; i++) {
 }
 
 module.exports = {
-    gulp: gulp,
-    config: config
+    gulp,
+    config
 };
