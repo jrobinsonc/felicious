@@ -36,7 +36,7 @@
     "babelify": "^10.0.0",
     "browser-sync": "^2.24.7",
     "browserify": "^16.2.2",
-    "codeceptjs": "^1.4.4",
+    "codeceptjs": "^2.0.3",
     "coveralls": "^3.0.2",
     "cssnano": "^4.1.1",
     "del": "^3.0.0",
