@@ -1,5 +1,7 @@
 # FElicious - Front-End Starter Kit
 
+> WARNING: This project has been abandoned in favor of better projects available out there. Personally I can recommend [Parcel](https://parceljs.org/).
+
 [![Build Status](https://travis-ci.org/jrobinsonc/felicious.svg?branch=master)](https://travis-ci.org/jrobinsonc/felicious)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/80cac1bb731048498b718ce87df06a21)](https://www.codacy.com/app/jrobinsonc/felicious?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jrobinsonc/felicious&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/jrobinsonc/felicious/badge.svg?branch=feature%2Fimplementing-code-coverage)](https://coveralls.io/github/jrobinsonc/felicious?branch=feature%2Fimplementing-code-coverage) [![Greenkeeper badge](https://badges.greenkeeper.io/jrobinsonc/felicious.svg)](https://greenkeeper.io/)
